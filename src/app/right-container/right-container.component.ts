@@ -1,47 +1,58 @@
-import { Component } from '@angular/core';
-import {NgClass, NgIf} from "@angular/common";
-import {faCloud} from "@fortawesome/free-solid-svg-icons";
+import {Component} from '@angular/core';
+import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {CommonModule} from "@angular/common";
+import {faThumbsUp} from "@fortawesome/free-solid-svg-icons";
+import {faThumbsDown} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faFaceSmile} from "@fortawesome/free-solid-svg-icons";
+import {faFaceFrown} from "@fortawesome/free-solid-svg-icons";
+import {WeatherService} from "../Services/weather.service";
+
+
 @Component({
-  selector: 'app-right-container',
-  standalone: true,
-  imports: [
-    NgClass,
-    NgIf,
-    FaIconComponent
-  ],
-  templateUrl: './right-container.component.html',
-  styleUrl: './right-container.component.css'
+    selector: 'app-right-container',
+    standalone: true,
+    imports: [
+        NgClass,
+        NgIf,
+        FaIconComponent,
+        NgForOf,
+        CommonModule,
+    ],
+    templateUrl: './right-container.component.html',
+    styleUrl: './right-container.component.css'
 })
 export class RightContainerComponent {
-  today = false;
-  week = true;
 
-  celsius = true;
-  fahrenheit = false;
+    faThumbsUp: any = faThumbsUp
+    faThumbsDown: any = faThumbsDown
 
-  constructor() { }
+    faFaceSmile: any = faFaceSmile
+    faFaceFrown: any = faFaceFrown
+
+    constructor(public weatherService: WeatherService) {
+    }
 
 
-  onTodayClick(){
-    this.today = true;
-    this.week = false;
-  }
+    onTodayClick() {
+        this.weatherService.today = true;
+        this.weatherService.week = false;
+    }
 
-  onWeekClick(){
-    this.today = false;
-    this.week = true;
-  }
+    onWeekClick() {
+        this.weatherService.today = false;
+        this.weatherService.week = true;
+    }
 
-  onCelsiusClick(){
-    this.celsius = true;
-    this.fahrenheit = false;
-  }
+    onCelsiusClick() {
+        this.weatherService.celsius = true;
+        this.weatherService.fahrenheit = false;
+    }
 
-  onFahrenheitClick(){
-    this.celsius = false;
-    this.fahrenheit = true;
-  }
+    onFahrenheitClick() {
+        this.weatherService.celsius = false;
+        this.weatherService.fahrenheit = true;
+    }
 
-  protected readonly faCloud = faCloud;
+    protected readonly Number = Number;
 }
