@@ -13,29 +13,24 @@
     </div>
     <div class="left-container-data-box">
         <div class="left-container-temp-date">
-            <div class="left-container-temp-img"><img src="" alt=""></div>
+            <div class="left-container-temp-img"><img [src]="'rainyandsunny.png'" alt="ra"></div>
             <div class="left-container-temp-value">12<sup>°C</sup></div>
-            <div class="left-container-day-time">Monday, 16:00</div>
+            <div class="left-container-day-time">Monday,<span> 16:00</span></div>
         </div>
         <div class="dividing-line"></div>
         <div class="left-container-other-details">
             <div class="left-container-temp-summary">
-                <div class="left-container-temp-summary-phrase-image">
-                    <fa-icon class="fa-xs" [icon]="faMagnifyingGlass"></fa-icon>
-                </div>
+                <div class="left-container-temp-summary-phrase-image"><fa-icon class="fa-sm" [icon]="faCloud"></fa-icon></div>
                 <div class="left-container-temp-summary-value">Mostly Cloudy</div>
             </div>
             <div class="left-container-rain-stats">
-                <div class="left-container-rain-stats-img">
-                    <fa-icon class="fa-xs" [icon]="faMagnifyingGlass"></fa-icon>
-                </div>
+                <div class="left-container-rain-stats-img"><fa-icon class="fa-lg" [icon]="faCloudRain"></fa-icon></div>
                 <div class="left-container-rain-stats-value">Rain - 30%</div>
             </div>
             <div class="left-container-location-details">
-                <div class="left-container-location-img"><img src="" alt=""></div>
+                <div class="left-container-location-img"><img [src]="'hello.jpg'" alt=""></div>
                 <div class="left-container-location-name">Nepal, Kathmandu</div>
             </div>
         </div>
     </div>
-
 </div>

@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import {NgClass} from "@angular/common";
-
+import {NgClass, NgIf} from "@angular/common";
+import {faCloud} from "@fortawesome/free-solid-svg-icons";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 @Component({
   selector: 'app-right-container',
   standalone: true,
   imports: [
-    NgClass
+    NgClass,
+    NgIf,
+    FaIconComponent
   ],
   templateUrl: './right-container.component.html',
   styleUrl: './right-container.component.css'
@@ -16,6 +19,9 @@ export class RightContainerComponent {
 
   celsius = true;
   fahrenheit = false;
+
+  constructor() { }
+
 
   onTodayClick(){
     this.today = true;
@@ -36,4 +42,6 @@ export class RightContainerComponent {
     this.celsius = false;
     this.fahrenheit = true;
   }
+
+  protected readonly faCloud = faCloud;
 }
