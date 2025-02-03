@@ -96,14 +96,24 @@ export class WeatherService {
     }
 
     getTimeFromString(localTime: string) {
-        return localTime.slice(11, 16);
+        return localTime.slice(11, 16);  // Assuming time is in "YYYY-MM-DDTHH:MM:SS" format
+    }
+
+    formatTo12hr(time: string) {
+        let [hours, minutes] = time.split(':').map(Number);
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+
+        const formattedHours = hours < 10 ? '0' + hours : String(hours);
+        const formattedMinutes = minutes < 10 ? '0' + minutes : String(minutes);
+        return `${formattedHours}:${formattedMinutes}`;
     }
 
     fillTodaysHighlight() {
         this.todaysHighlight.airQuality = this.weatherDetails['v3-wx-globalAirQuality'].globalairquality.airQualityIndex;
         this.todaysHighlight.humidity = this.weatherDetails['v3-wx-observations-current'].relativeHumidity;
         this.todaysHighlight.sunrise = this.getTimeFromString(this.weatherDetails['v3-wx-observations-current'].sunriseTimeLocal);
-        this.todaysHighlight.sunset = this.getTimeFromString(this.weatherDetails['v3-wx-observations-current'].sunsetTimeLocal);
+        this.todaysHighlight.sunset = this.formatTo12hr(this.getTimeFromString(this.weatherDetails['v3-wx-observations-current'].sunsetTimeLocal));
         this.todaysHighlight.uvIndex = this.weatherDetails['v3-wx-observations-current'].uvIndex;
         this.todaysHighlight.visibility = this.weatherDetails['v3-wx-observations-current'].visibility;
         this.todaysHighlight.windStatus = this.weatherDetails['v3-wx-observations-current'].windSpeed;
