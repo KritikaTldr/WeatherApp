@@ -96,7 +96,7 @@ export class WeatherService {
     }
 
     getTimeFromString(localTime: string) {
-        return localTime.slice(11, 16);  // Assuming time is in "YYYY-MM-DDTHH:MM:SS" format
+        return localTime.slice(11, 16);
     }
 
     formatTo12hr(time: string) {
